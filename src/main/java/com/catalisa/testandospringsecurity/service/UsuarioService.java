@@ -5,6 +5,7 @@ import com.catalisa.testandospringsecurity.dto.UsuarioRespostaDto;
 import com.catalisa.testandospringsecurity.model.UsuarioModel;
 import com.catalisa.testandospringsecurity.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,6 +14,12 @@ import java.util.Optional;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+
+    private BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 
     public UsuarioRespostaDto exibirUsuario(String login) {
         Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findById(login);
@@ -23,11 +30,13 @@ public class UsuarioService {
     }
 
     public UsuarioRespostaDto cadastrar(UsuarioDto usuarioDto) {
-        Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findById(usuarioDto.getLoguin());
+        Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findById(usuarioDto.getLogin());
         if (optionalUsuarioModel.isPresent()) {
             throw new RuntimeException("este usuário já existe");
         }
         UsuarioModel usuarioModel = usuarioDto.converterParaUsuarioModel();
+usuarioModel.setSenha(passwordEncoder().encode(usuarioModel.getSenha()));
+
         UsuarioModel usuario = usuarioRepository.save(usuarioModel);
         return UsuarioRespostaDto.converterParaRespostaDto(usuario);
     }

@@ -9,16 +9,16 @@ import lombok.Getter;
 @Getter
 public class UsuarioRespostaDto {
 private String nome;
-private String loguin;
+private String login;
 private String senha;
 
 public UsuarioRespostaDto(UsuarioModel usuarioModel) {
     this.nome = usuarioModel.getNome();
-    this.loguin = usuarioModel.getLoguin();
+    this.login = usuarioModel.getLogin();
     this.senha = usuarioModel.getSenha();
 }
 
 public static UsuarioRespostaDto converterParaRespostaDto(UsuarioModel usuarioModel) {
-    return new UsuarioRespostaDto(usuarioModel.getNome(), usuarioModel.getLoguin(), usuarioModel.getSenha());
+    return new UsuarioRespostaDto(usuarioModel.getNome(), usuarioModel.getLogin(), usuarioModel.getSenha());
 }
 }

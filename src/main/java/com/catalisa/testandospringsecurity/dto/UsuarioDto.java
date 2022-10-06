@@ -15,19 +15,19 @@ public class UsuarioDto {
     @NotBlank(message = "campo vasio")
     private String telefone;
     @NotBlank(message = "campo vasio")
-    private String loguin;
+    private String login;
     @NotBlank(message = "campo vasio")
     private String senha;
 
-    public UsuarioDto(String nome, int idade, String telefone, String loguin, String senha) {
+    public UsuarioDto(String nome, int idade, String telefone, String login, String senha) {
         this.nome = nome;
         this.idade = idade;
         this.telefone = telefone;
-        this.loguin = loguin;
+        this.login = login;
         this.senha = senha;
     }
 
     public UsuarioModel converterParaUsuarioModel() {
-        return new UsuarioModel(nome, idade, telefone, loguin, senha);
+        return new UsuarioModel(nome, idade, telefone, login, senha);
     }
 }
