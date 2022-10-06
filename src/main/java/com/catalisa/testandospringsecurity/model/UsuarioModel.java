@@ -26,6 +26,6 @@ public class UsuarioModel {
     @Id
     @Column(nullable = false, length = 15, unique = true)
     private String login;
-    @Column(unique = true, nullable = false)
-    private String senha;
+    @Column(nullable = false)
+    private String senha;       
 }
