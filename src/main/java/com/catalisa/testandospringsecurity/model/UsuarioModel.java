@@ -17,8 +17,10 @@ import java.util.Collection;
 public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @Column(nullable = false)
     private String nome;
+    private String userName;
     @Column(nullable = false, length = 3)
     private int idade;
     @Column(nullable = false, unique = true, length = 11)
