@@ -12,5 +12,5 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeHttpRequests().antMatchers("/usuarios/cadastrar", "usuario/exibir")
                 .permitAll().and().httpBasic();
     }
-}
+    }
 

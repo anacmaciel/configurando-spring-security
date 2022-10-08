@@ -21,8 +21,8 @@ public class UsuarioService {
     }
 
 
-    public UsuarioRespostaDto exibirUsuario(String login) {
-        Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findById(login);
+    public UsuarioRespostaDto exibirUsuario(Long id) {
+        Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findById(id);
         if (optionalUsuarioModel.isEmpty()) {
             throw new RuntimeException("este usuário não foi cadastrado");
         }
@@ -30,7 +30,7 @@ public class UsuarioService {
     }
 
     public UsuarioRespostaDto cadastrar(UsuarioDto usuarioDto) {
-        Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findById(usuarioDto.getLogin());
+        Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findByLogin(usuarioDto.getLogin());
         if (optionalUsuarioModel.isPresent()) {
             throw new RuntimeException("este usuário já existe");
         }

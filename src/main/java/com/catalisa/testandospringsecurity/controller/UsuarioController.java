@@ -23,8 +23,8 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @GetMapping(path = "/usuarios/exibir/{login}")
-    public ResponseEntity<UsuarioRespostaDto> exibirUsuario(@PathVariable String loguin) {
-        UsuarioRespostaDto usuarioRespostaDto = usuarioService.exibirUsuario(loguin);
+    public ResponseEntity<UsuarioRespostaDto> exibirUsuario(@PathVariable Long id) {
+        UsuarioRespostaDto usuarioRespostaDto = usuarioService.exibirUsuario(id);
         return ResponseEntity.ok(usuarioRespostaDto);
     }
 
