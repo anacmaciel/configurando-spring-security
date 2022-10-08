@@ -20,7 +20,7 @@ public class UsuarioModel {
     private Long id;
     @Column(nullable = false)
     private String nome;
-    private String userName;
+    private String username;
     @Column(nullable = false, length = 3)
     private int idade;
     @Column(nullable = false, unique = true, length = 11)
