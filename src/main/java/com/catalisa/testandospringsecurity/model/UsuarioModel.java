@@ -1,20 +1,24 @@
 package com.catalisa.testandospringsecurity.model;
 
+import com.catalisa.testandospringsecurity.enumeration.PerfilEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UsuarioModel {
+public class UsuarioModel extends Serializable {
+
+    private static final long serialVersionUID = 306411570471828345L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -29,6 +33,8 @@ public class UsuarioModel {
     private String login;
     @Column(nullable = false)
     private String senha;
+@Enumerated(EnumType.STRING)
+    private PerfilEnum perfil;
     @ManyToMany
     @JoinTable(
             name = "usuarios_roles",
